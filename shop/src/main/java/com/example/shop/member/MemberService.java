@@ -15,7 +15,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     // 회원 등록
-    // @Transactional
+    @Transactional
     public Long createMember(MemberCreateRequest request) {
         Member existMember = memberRepository.findByLoginId(request.getLoginId());
 
@@ -52,7 +52,7 @@ public class MemberService {
     }
 
     // 회원 정보 수정
-    // @Transactional
+    @Transactional
     public void updateMember(Long id, MemberUpdateRequest request) {
         Member member = memberRepository.findById(id);
 
@@ -64,7 +64,7 @@ public class MemberService {
     }
 
     // 회원 삭제
-    // @Transactional
+    @Transactional
     public void deleteMember(Long id) {
         Member member = memberRepository.findById(id);
 

@@ -1,5 +1,8 @@
 package com.example.shop.member;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +18,8 @@ import lombok.Setter;
 public class Member {
 
     // 회원 고유 식별자
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // 회원 아이디
