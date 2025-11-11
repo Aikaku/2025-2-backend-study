@@ -3,6 +3,9 @@ package com.example.shop.product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Repository
 public class ProductRepository {
@@ -29,7 +32,7 @@ public class ProductRepository {
 
     // 이름으로 상품 조회
     public Product findByName(String name) {
-        List<Product> result = em.createQuery("select p from Product p where name")
+        List<Product> result = em.createQuery("select p from Product p where p.productName = :name", Product.class)
                 .setParameter("name", name).getResultList();
         return result.isEmpty() ? null : result.get(0);
     }

@@ -32,7 +32,7 @@ public class MemberRepository {
 
     // 로그인 아이디로 회원 조회
     public Member findByLoginId(String loginId) {
-        List<Member> result = em.createQuery("select m from Member m where m.loginId", Member.class)
+        List<Member> result = em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
                 .setParameter("loginId", loginId).getResultList();
 
         return result.isEmpty() ? null : result.get(0);
